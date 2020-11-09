@@ -56,7 +56,7 @@ pairs(Fishies)
 ```
 
 ```{r}
-Fishies=filter(Fishdata, Species == "")
+Fishies=filter(Fishdata, Species == "Smelt")
 Fishies = select(Fishies,-Species)
 pairs(Fishies)
 ```
