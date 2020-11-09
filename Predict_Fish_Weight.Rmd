@@ -49,6 +49,17 @@ Fishies = select(Fishies,-Species)
 pairs(Fishies)
 ```
 
+```{r}
+Fishies=filter(Fishdata, Species == "Bream")
+Fishies = select(Fishies,-Species)
+pairs(Fishies)
+```
+
+```{r}
+Fishies=filter(Fishdata, Species == "")
+Fishies = select(Fishies,-Species)
+pairs(Fishies)
+```
 
 ### Numerical Descriptive Results
 
