@@ -49,18 +49,23 @@ FishiesP=filter(Fishdata, Species == "Perch")
 FishiesP = select(FishiesP,-Species)
 pairs(FishiesP)
 ```
+I would estimate from the graph above that Length1 and Width may be the best variables to try and estimate weight in a linear model for perch fish.
+
 
 ```{r}
 FishiesB=filter(Fishdata, Species == "Bream")
 FishiesB = select(FishiesB,-Species)
 pairs(FishiesB)
 ```
+I would estimate from the graph above that Length2 and Length 3 may be the best variables to try and estimate weight in a linear model for bream fish.
+
 
 ```{r}
 FishiesS=filter(Fishdata, Species == "Smelt")
 FishiesS = select(FishiesS,-Species)
 pairs(FishiesS)
 ```
+I would estimate from the graph above that Length1 and Length2 may be the best variables to try and estimate weight in a linear model for smelt fish.
 
 ### Numerical Descriptive Results
 
@@ -92,6 +97,12 @@ as.data.frame(summary.out$outmat)
 ```
 
 ```{r}
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
+
+```{r}
 Breammodel=lm(Weight~Length1+Height,data=FishiesB)
 summary(Breammodel)
 ```
@@ -109,6 +120,10 @@ summary.out <- summary(regsubsets.out)
 as.data.frame(summary.out$outmat)
 ```
 
+```{r}
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
 
 ```{r}
 Smeltmodel=lm(Weight~Length2+Height,data=FishiesS)
@@ -129,11 +144,21 @@ summary.out <- summary(regsubsets.out)
 as.data.frame(summary.out$outmat)
 ```
 
+```{r}
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
 ## Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
 
 # Discussion and Conclusion
+Length 1 and Width are the best variables for Perch.   
+Length 1 and Length 2 are the best variables for Smelt.  
+Length 2 and Length 3 are the best variables for Bream.    
+
+
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
